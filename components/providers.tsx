@@ -3,6 +3,7 @@
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import { ConfigProvider, theme } from 'antd'
 import type { ReactNode } from 'react'
+import { I18nProvider } from '@/lib/i18n/I18nProvider'
 
 const syncroTheme = {
   algorithm: theme.darkAlgorithm,
@@ -27,7 +28,9 @@ export default function Providers({ children }: { children: ReactNode }) {
   return (
     <AntdRegistry>
       <ConfigProvider theme={syncroTheme}>
-        <div style={{ background: '#080d1a', minHeight: '100vh' }}>{children}</div>
+        <I18nProvider>
+          <div style={{ background: '#080d1a', minHeight: '100vh' }}>{children}</div>
+        </I18nProvider>
       </ConfigProvider>
     </AntdRegistry>
   )

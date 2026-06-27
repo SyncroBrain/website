@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from 'antd'
 import { GithubOutlined, ArrowRightOutlined } from '@ant-design/icons'
+import { useI18n } from '@/lib/i18n/I18nProvider'
 
-/* ─── Animated Neural Network SVG ─── */
 function NeuralNetwork() {
   const [tick, setTick] = useState(0)
 
@@ -14,16 +14,12 @@ function NeuralNetwork() {
   }, [])
 
   const nodes = [
-    // Edge devices
     { id: 'e1', x: 60,  y: 80,  label: 'ESP32',    color: '#06b6d4', r: 18 },
     { id: 'e2', x: 60,  y: 180, label: 'Sensor',   color: '#06b6d4', r: 18 },
     { id: 'e3', x: 60,  y: 280, label: 'Gateway',  color: '#06b6d4', r: 18 },
-    // Pipe
     { id: 'p1', x: 200, y: 130, label: 'EMQX',     color: '#3b82f6', r: 22 },
     { id: 'p2', x: 200, y: 230, label: 'MQTT',     color: '#3b82f6', r: 22 },
-    // Brain (center)
     { id: 'brain', x: 340, y: 180, label: 'AI Brain', color: '#2563eb', r: 32 },
-    // Clients
     { id: 'c1', x: 480, y: 100, label: 'Console',  color: '#8b5cf6', r: 18 },
     { id: 'c2', x: 480, y: 180, label: 'BI',       color: '#8b5cf6', r: 18 },
     { id: 'c3', x: 480, y: 260, label: 'Agents',   color: '#8b5cf6', r: 18 },
@@ -59,14 +55,11 @@ function NeuralNetwork() {
         </filter>
       </defs>
 
-      {/* Brain glow */}
       <circle cx={340} cy={180} r={60} fill="url(#brainGlow)" />
 
-      {/* Edges with animated pulses */}
       {edges.map((edge, i) => {
         const from = nodeMap[edge.from]
         const to = nodeMap[edge.to]
-        const len = Math.hypot(to.x - from.x, to.y - from.y)
         const phase = ((tick + i * 15) % 60) / 60
         const px = from.x + (to.x - from.x) * phase
         const py = from.y + (to.y - from.y) * phase
@@ -78,77 +71,31 @@ function NeuralNetwork() {
               strokeWidth={1.5}
               strokeDasharray="4 4"
             />
-            <circle
-              cx={px} cy={py} r={3}
-              fill={from.color}
-              opacity={0.9}
-              filter="url(#glow)"
-            />
+            <circle cx={px} cy={py} r={3} fill={from.color} opacity={0.9} filter="url(#glow)" />
           </g>
         )
       })}
 
-      {/* Nodes */}
       {nodes.map(n => (
         <g key={n.id} filter={n.id === 'brain' ? 'url(#glow)' : undefined}>
-          {/* Outer ring */}
-          <circle
-            cx={n.x} cy={n.y} r={n.r + 4}
-            fill="none"
-            stroke={n.color}
-            strokeWidth={1}
-            opacity={0.3}
-          />
-          {/* Main circle */}
-          <circle
-            cx={n.x} cy={n.y} r={n.r}
-            fill={`${n.color}20`}
-            stroke={n.color}
-            strokeWidth={n.id === 'brain' ? 2 : 1.5}
-          />
-          {/* Icon text */}
-          <text
-            x={n.x} y={n.y - 2}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fill={n.color}
-            fontSize={n.id === 'brain' ? 10 : 8}
-            fontFamily="var(--font-mono)"
-            fontWeight={700}
-          >
+          <circle cx={n.x} cy={n.y} r={n.r + 4} fill="none" stroke={n.color} strokeWidth={1} opacity={0.3} />
+          <circle cx={n.x} cy={n.y} r={n.r} fill={`${n.color}20`} stroke={n.color} strokeWidth={n.id === 'brain' ? 2 : 1.5} />
+          <text x={n.x} y={n.y - 2} textAnchor="middle" dominantBaseline="middle" fill={n.color} fontSize={n.id === 'brain' ? 10 : 8} fontFamily="var(--font-mono)" fontWeight={700}>
             {n.id === 'brain' ? 'BRAIN' : n.label.substring(0, 3).toUpperCase()}
           </text>
-          {/* Label below */}
-          <text
-            x={n.x} y={n.y + n.r + 12}
-            textAnchor="middle"
-            fill="rgba(148,163,184,0.7)"
-            fontSize={8}
-            fontFamily="var(--font-mono)"
-          >
+          <text x={n.x} y={n.y + n.r + 12} textAnchor="middle" fill="rgba(148,163,184,0.7)" fontSize={8} fontFamily="var(--font-mono)">
             {n.label}
           </text>
         </g>
       ))}
 
-      {/* Floating label layers */}
       {[
         { x: 50, y: 360, text: 'EDGE', color: '#06b6d4' },
         { x: 195, y: 360, text: 'PIPE', color: '#3b82f6' },
         { x: 335, y: 360, text: 'BRAIN', color: '#2563eb' },
         { x: 475, y: 360, text: 'CLIENT', color: '#8b5cf6' },
       ].map(lbl => (
-        <text
-          key={lbl.text}
-          x={lbl.x} y={lbl.y}
-          textAnchor="middle"
-          fill={lbl.color}
-          fontSize={9}
-          fontFamily="var(--font-mono)"
-          fontWeight={700}
-          opacity={0.6}
-          letterSpacing={2}
-        >
+        <text key={lbl.text} x={lbl.x} y={lbl.y} textAnchor="middle" fill={lbl.color} fontSize={9} fontFamily="var(--font-mono)" fontWeight={700} opacity={0.6} letterSpacing={2}>
           {lbl.text}
         </text>
       ))}
@@ -156,39 +103,38 @@ function NeuralNetwork() {
   )
 }
 
-/* ─── Social Proof Strip ─── */
-const badges = [
-  'Open Source',
-  'Private Deploy',
-  'GDPR / NIS2 Ready',
-  'White-label',
-  'MQTT Standard',
-  'Self-hosted',
-]
-
 export default function Hero() {
+  const { t } = useI18n()
+  const h = t.hero
+
+  const stats = [
+    { value: h.statDevices, label: h.statDevicesLabel },
+    { value: h.statCost, label: h.statCostLabel },
+    { value: h.statUptime, label: h.statUptimeLabel },
+  ]
+
   return (
     <section
       id="hero"
       className="sb-grid-bg"
       style={{
-        minHeight: '100vh',
+        minHeight: 'auto',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        paddingTop: 80,
+        paddingTop: 72,
+        paddingBottom: 0,
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Ambient glow */}
       <div style={{
         position: 'absolute',
-        top: '20%',
+        top: '15%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 600,
-        height: 600,
+        width: 520,
+        height: 520,
         borderRadius: '50%',
         background: 'radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)',
         pointerEvents: 'none',
@@ -199,68 +145,47 @@ export default function Hero() {
           className="hero-grid"
           style={{
             display: 'grid',
-            gap: 48,
+            gap: 32,
             alignItems: 'center',
-            minHeight: '70vh',
+            minHeight: '58vh',
           }}
         >
-          {/* Left: Copy */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-            {/* Badge */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, width: 'fit-content' }}>
-              <span style={{
-                padding: '4px 12px',
-                borderRadius: 20,
-                border: '1px solid rgba(37,99,235,0.4)',
-                background: 'rgba(37,99,235,0.1)',
-                fontSize: 12,
-                fontWeight: 600,
-                color: '#60a5fa',
-                fontFamily: 'var(--font-mono)',
-                letterSpacing: '0.05em',
-              }}>
-                v1.0 · Open Source
-              </span>
-            </div>
-
-            {/* Headline */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div>
               <h1 style={{
-                fontSize: 'clamp(36px, 5vw, 64px)',
+                fontSize: 'clamp(32px, 4.5vw, 56px)',
                 fontWeight: 800,
-                lineHeight: 1.1,
+                lineHeight: 1.08,
                 letterSpacing: '-0.03em',
                 color: 'white',
-                marginBottom: 8,
+                marginBottom: 0,
               }}>
-                Connect every device.{' '}
-                <span className="gradient-text">Give it a brain.</span>
+                {h.headline1}{' '}
+                <span className="gradient-text">{h.headline2}</span>
               </h1>
             </div>
 
-            {/* Subheadline */}
             <div style={{
-              fontSize: 'clamp(14px, 1.8vw, 18px)',
+              fontSize: 'clamp(14px, 1.6vw, 17px)',
               color: '#94a3b8',
-              lineHeight: 1.7,
-              maxWidth: 520,
+              lineHeight: 1.6,
+              maxWidth: 500,
             }}>
-              连接设备的 AI 原生操作系统 —{' '}
-              <span style={{ color: '#60a5fa' }}>开源可私有化</span>，
-              数万级成本替代闭源 IoT 平台
+              {h.subheadline}{' '}
+              <span style={{ color: '#60a5fa' }}>{h.subheadlineHighlight}</span>
             </div>
 
             <p style={{
-              fontSize: 15,
+              fontSize: 14,
               color: '#64748b',
-              lineHeight: 1.7,
-              maxWidth: 480,
+              lineHeight: 1.6,
+              maxWidth: 460,
+              margin: 0,
             }}>
-              An AI-native operating system for connected devices. Enterprise-grade MQTT pipeline, BI analytics, and AI agent marketplace — all on your own infrastructure.
+              {h.description}
             </p>
 
-            {/* CTA Buttons */}
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', paddingTop: 4 }}>
               <Button
                 type="primary"
                 size="large"
@@ -270,14 +195,14 @@ export default function Hero() {
                   background: '#2563eb',
                   borderColor: '#2563eb',
                   fontWeight: 700,
-                  fontSize: 15,
-                  height: 48,
-                  padding: '0 28px',
+                  fontSize: 14,
+                  height: 44,
+                  padding: '0 24px',
                   borderRadius: 8,
                 }}
                 href="#pricing"
               >
-                Start Free
+                {h.startFree}
               </Button>
               <a
                 href="https://github.com/syncrobrain"
@@ -287,12 +212,12 @@ export default function Hero() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  height: 48,
-                  padding: '0 24px',
+                  height: 44,
+                  padding: '0 20px',
                   borderRadius: 8,
                   border: '1px solid rgba(37,99,235,0.35)',
                   color: '#e2e8f0',
-                  fontSize: 15,
+                  fontSize: 14,
                   fontWeight: 600,
                   textDecoration: 'none',
                   transition: 'all 0.2s',
@@ -307,63 +232,56 @@ export default function Hero() {
                   e.currentTarget.style.borderColor = 'rgba(37,99,235,0.35)'
                 }}
               >
-                <GithubOutlined style={{ fontSize: 18 }} />
-                View on GitHub
+                <GithubOutlined style={{ fontSize: 16 }} />
+                {h.viewGithub}
               </a>
             </div>
 
-            {/* Stats */}
-            <div style={{ display: 'flex', gap: 32, paddingTop: 8, flexWrap: 'wrap' }}>
-              {[
-                { value: '100K+', label: 'Devices Connected' },
-                { value: '< ¥50K', label: 'vs Closed SaaS' },
-                { value: '99.9%', label: 'Uptime SLA' },
-              ].map(stat => (
+            <div style={{ display: 'flex', gap: 28, paddingTop: 4, flexWrap: 'wrap' }}>
+              {stats.map(stat => (
                 <div key={stat.label}>
-                  <div style={{ fontSize: 22, fontWeight: 800, color: '#60a5fa', lineHeight: 1.1 }}>
+                  <div style={{ fontSize: 20, fontWeight: 800, color: '#60a5fa', lineHeight: 1.1 }}>
                     {stat.value}
                   </div>
-                  <div style={{ fontSize: 12, color: '#475569', marginTop: 2 }}>{stat.label}</div>
+                  <div style={{ fontSize: 11, color: '#475569', marginTop: 2 }}>{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right: Neural Network */}
           <div style={{
             position: 'relative',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            minHeight: 360,
+            minHeight: 320,
           }}>
             <div
               className="animate-float"
               style={{
                 width: '100%',
-                maxWidth: 540,
+                maxWidth: 520,
                 aspectRatio: '3/2',
                 background: 'rgba(13,20,40,0.6)',
                 border: '1px solid rgba(37,99,235,0.2)',
                 borderRadius: 16,
-                padding: '24px 16px',
+                padding: '20px 14px',
                 position: 'relative',
               }}
             >
-              {/* Terminal header */}
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
-                marginBottom: 16,
-                paddingBottom: 12,
+                marginBottom: 12,
+                paddingBottom: 10,
                 borderBottom: '1px solid rgba(37,99,235,0.12)',
               }}>
                 {['#ef4444', '#f59e0b', '#22c55e'].map(c => (
                   <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c }} />
                 ))}
                 <span style={{ marginLeft: 8, fontSize: 11, color: '#475569', fontFamily: 'var(--font-mono)' }}>
-                  syncrobrain — edge→pipe→brain→client
+                  {h.terminalTitle}
                 </span>
               </div>
               <NeuralNetwork />
@@ -372,13 +290,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Social Proof Strip */}
       <div style={{
         borderTop: '1px solid rgba(37,99,235,0.12)',
         borderBottom: '1px solid rgba(37,99,235,0.12)',
         background: 'rgba(13,20,40,0.5)',
-        padding: '14px 0',
-        marginTop: 48,
+        padding: '10px 0',
+        marginTop: 32,
         overflow: 'hidden',
       }}>
         <div style={{
@@ -387,13 +304,13 @@ export default function Hero() {
           padding: '0 24px',
           display: 'flex',
           alignItems: 'center',
-          gap: 32,
+          gap: 24,
           flexWrap: 'wrap',
           justifyContent: 'center',
         }}>
-          {badges.map(b => (
+          {h.badges.map(b => (
             <span key={b} style={{
-              fontSize: 12,
+              fontSize: 11,
               fontWeight: 600,
               color: '#94a3b8',
               letterSpacing: '0.05em',
@@ -404,8 +321,8 @@ export default function Hero() {
             }}>
               <span style={{
                 display: 'inline-block',
-                width: 6,
-                height: 6,
+                width: 5,
+                height: 5,
                 borderRadius: '50%',
                 background: '#2563eb',
               }} />

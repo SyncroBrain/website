@@ -47,6 +47,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://syncrobrain.com',
   },
+  icons: {
+    icon: '/icon.svg',
+    apple: '/apple-icon.png',
+  },
 }
 
 export const viewport: Viewport = {
@@ -60,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased bg-sb-base text-sb-text">
         <Providers>{children}</Providers>
       </body>

@@ -1,26 +1,46 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @media (prefers-color-scheme: light) {
-      .background { fill: black; }
-      .foreground { fill: white; }
-    }
-    @media (prefers-color-scheme: dark) {
-      .background { fill: white; }
-      .foreground { fill: black; }
-    }
-  </style>
-  <g clip-path="url(#clip0_7960_43945)">
-    <rect class="background" width="180" height="180" rx="37" />
-    <g style="transform: scale(95%); transform-origin: center">
-      <path class="foreground"
-        d="M101.141 53H136.632C151.023 53 162.689 64.6662 162.689 79.0573V112.904H148.112V79.0573C148.112 78.7105 148.098 78.3662 148.072 78.0251L112.581 112.898C112.701 112.902 112.821 112.904 112.941 112.904H148.112V126.672H112.941C98.5504 126.672 86.5638 114.891 86.5638 100.5V66.7434H101.141V100.5C101.141 101.15 101.191 101.792 101.289 102.422L137.56 66.7816C137.255 66.7563 136.945 66.7434 136.632 66.7434H101.141V53Z" />
-      <path class="foreground"
-        d="M65.2926 124.136L14 66.7372H34.6355L64.7495 100.436V66.7372H80.1365V118.47C80.1365 126.278 70.4953 129.958 65.2926 124.136Z" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="sb-bg" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a0f1e"/>
+      <stop offset="1" stop-color="#0d1428"/>
+    </linearGradient>
+    <linearGradient id="sb-stroke" x1="8" y1="8" x2="92" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22d3ee"/>
+      <stop offset="0.45" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="sb-spark" x1="46" y1="0" x2="54" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c084fc"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#sb-bg)"/>
+  <g transform="translate(1.6 2.2) scale(0.28)">
+    <g stroke="url(#sb-spark)" stroke-width="1.4" stroke-linecap="round">
+      <path d="M50 1.5 L51.2 4.8 L54.5 4.8 L51.8 6.8 L52.8 10 L50 8.2 L47.2 10 L48.2 6.8 L45.5 4.8 L48.8 4.8 Z" fill="url(#sb-spark)" stroke="none"/>
+    </g>
+    <g stroke="url(#sb-stroke)" stroke-width="1.35" stroke-linecap="round" opacity="0.9">
+      <line x1="50" y1="52" x2="50" y2="22"/>
+      <line x1="50" y1="52" x2="76" y2="36"/>
+      <line x1="50" y1="52" x2="76" y2="68"/>
+      <line x1="50" y1="52" x2="50" y2="82"/>
+      <line x1="50" y1="52" x2="24" y2="68"/>
+      <line x1="50" y1="52" x2="24" y2="36"/>
+    </g>
+    <g stroke="url(#sb-stroke)" stroke-width="1.7" fill="none">
+      <circle cx="24" cy="36" r="7.5"/>
+      <circle cx="50" cy="22" r="7.5"/>
+      <circle cx="76" cy="36" r="7.5"/>
+      <circle cx="76" cy="68" r="7.5"/>
+      <circle cx="50" cy="82" r="7.5"/>
+      <circle cx="24" cy="68" r="7.5"/>
+      <rect x="41" y="44" width="18" height="18" rx="2.8"/>
+      <line x1="50" y1="47" x2="50" y2="52"/>
+      <line x1="50" y1="52" x2="46.5" y2="57.5"/>
+      <line x1="50" y1="52" x2="53.5" y2="57.5"/>
+      <circle cx="50" cy="47" r="1.15" fill="url(#sb-stroke)" stroke="none"/>
+      <circle cx="46.5" cy="57.5" r="1" fill="url(#sb-stroke)" stroke="none"/>
+      <circle cx="53.5" cy="57.5" r="1" fill="url(#sb-stroke)" stroke="none"/>
     </g>
   </g>
-  <defs>
-    <clipPath id="clip0_7960_43945">
-      <rect width="180" height="180" fill="white" />
-    </clipPath>
-  </defs>
 </svg>

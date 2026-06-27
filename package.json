@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3000",
+    "dev": "next dev --port 13013",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "preview": "npx serve out",
-    "deploy": "pnpm build && wrangler pages deploy out --project-name=syncrobrain-website"
+    "render:logo": "node scripts/render-logo-png.mjs",
+    "deploy": "pnpm build && wrangler pages deploy out --project-name=syncrobrain-website --branch=master",
+    "setup:dns": "node scripts/setup-cloudflare-dns.mjs"
   },
   "dependencies": {
     "@ant-design/icons": "^6.3.1",
@@ -19,11 +21,13 @@
     "react-dom": "^19"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/postcss": "^4.2.0",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8.5",
+    "sharp": "^0.35.2",
     "tailwindcss": "^4.2.0",
     "typescript": "5.7.3",
     "wrangler": "^4.24.0"
