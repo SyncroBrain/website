@@ -1,4 +1,4 @@
-import type { Translations } from '../types'
+﻿import type { Translations } from '../types'
 
 export const zhTW: Translations = {
   common: {
@@ -137,7 +137,7 @@ export const zhTW: Translations = {
       { tagline: 'Learn', desc: '視覺化程式設計教育平台' },
       { tagline: 'Earn', desc: 'AI 智能體市場與工作流自動化' },
       { tagline: 'Control', desc: '遠端裝置管理控制台' },
-      { tagline: 'Watch', desc: '直播與媒體管理平台' },
+      { tagline: 'Vision', desc: '直播與媒體管理平台' },
     ],
     footer: '探索完整 LuminaryWorks 生態 →',
   },

@@ -22,7 +22,7 @@ const navActionStyle: CSSProperties = {
   background: 'transparent',
   lineHeight: 1,
 }
-
+const docsUrl  = 'https://github.com/syncrobrain/'
 export default function Navbar() {
   const { t } = useI18n()
   const [scrolled, setScrolled] = useState(false)
@@ -34,7 +34,7 @@ export default function Navbar() {
     { label: t.nav.compare, href: '#compare' },
     { label: t.nav.industries, href: '#industries' },
     { label: t.nav.pricing, href: '#pricing' },
-    { label: t.nav.docs, href: 'https://github.com/syncrobrain/platform/blob/main/ONBOARDING.md' },
+    { label: t.nav.docs, href: 'docsUrl' },
   ]
 
   useEffect(() => {

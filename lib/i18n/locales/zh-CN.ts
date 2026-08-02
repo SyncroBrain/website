@@ -1,4 +1,4 @@
-import type { Translations } from '../types'
+﻿import type { Translations } from '../types'
 
 export const zhCN: Translations = {
   common: {
@@ -136,8 +136,8 @@ export const zhCN: Translations = {
       { tagline: 'Connect', desc: 'AI 原生 IoT PaaS — 您在这里' },
       { tagline: 'Learn', desc: '可视化编程教育平台' },
       { tagline: 'Earn', desc: 'AI 智能体市场与工作流自动化' },
-      { tagline: 'Control', desc: '远程设备管理控制台' },
-      { tagline: 'Watch', desc: '直播与媒体管理平台' },
+      { tagline: 'Control', desc: 'VistaRemote — WebRTC 远程桌面与审计' },
+      { tagline: 'Vision', desc: '直播与媒体管理平台' },
     ],
     footer: '探索完整 LuminaryWorks 生态 →',
   },

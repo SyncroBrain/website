@@ -57,4 +57,4 @@ export default function LanguageSwitcher() {
   )
 }
 
-export const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL ?? 'https://console.syncrobrain.com'
+export const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL ?? 'https://login.syncrobrain.com'

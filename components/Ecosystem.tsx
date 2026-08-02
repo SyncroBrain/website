@@ -3,12 +3,12 @@
 import { useI18n } from '@/lib/i18n/I18nProvider'
 
 const productMeta = [
-  { id: 'data-luminary', name: 'DataLuminary', color: '#f59e0b', href: 'https://github.com/dataluminary/platform', highlight: false },
+  { id: 'data-luminary', name: 'DataLuminary', color: '#f59e0b', href: 'https://dataluminary.dev', highlight: false },
   { id: 'syncrobrain', name: 'SyncroBrain', color: '#2563eb', href: '#hero', highlight: true },
-  { id: 'blocky-edu', name: 'BlockyEdu', color: '#22c55e', href: 'https://github.com/blockyedu/platform', highlight: false },
-  { id: 'doerflow', name: 'DoerFlow', color: '#8b5cf6', href: 'https://github.com/doerflow/platform', highlight: false },
-  { id: 'vistaremote', name: 'VistaRemote', color: '#06b6d4', href: 'https://github.com/VistaRemote/vibeCode', highlight: false },
-  { id: 'vistacast', name: 'VistaCast', color: '#ef4444', href: 'https://github.com/VistaCast/vistacast', highlight: false },
+  { id: 'blocky-edu', name: 'BlockyEdu', color: '#22c55e', href: 'https://blockyedu.com', highlight: false },
+  { id: 'doerflow', name: 'DoerFlow', color: '#8b5cf6', href: 'https://doerflow.dev', highlight: false },
+  { id: 'vistaremote', name: 'VistaRemote', color: '#06b6d4', href: 'https://remote.vistacast.dev', highlight: false },
+  { id: 'vistacast', name: 'VistaCast', color: '#ef4444', href: 'https://vistacast.dev', highlight: false },
 ]
 
 export default function Ecosystem() {
@@ -158,7 +158,7 @@ export default function Ecosystem() {
 
         <div style={{ textAlign: 'center', marginTop: 40 }}>
           <a
-            href="https://github.com/LuminaryWorks/LuminaryWorks"
+            href="https://luminaryworks.dev"
             target="_blank"
             rel="noopener noreferrer"
             style={{

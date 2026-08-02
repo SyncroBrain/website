@@ -1,4 +1,4 @@
-# SyncroBrain 官网
+﻿# SyncroBrain 官网
 
 基于 [v0.app](https://v0.app) 设计稿实现的营销站点：**Next.js 静态导出** + **Ant Design v6**，部署至 **Cloudflare Pages**，域名 **syncrobrain.com**。
 
@@ -79,3 +79,7 @@ website/
 ├── wrangler.jsonc    # Cloudflare Pages 配置
 └── out/              # 构建输出（gitignore）
 ```
+
+## License
+
+[Polyform Noncommercial License 1.0.0](LICENSE) (Polyform-NC). See SyncroBrain meta repo for commercial licensing.

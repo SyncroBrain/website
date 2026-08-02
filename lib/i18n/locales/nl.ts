@@ -1,4 +1,4 @@
-import type { Translations } from '../types'
+﻿import type { Translations } from '../types'
 
 export const nl: Translations = {
   common: {
@@ -142,8 +142,8 @@ export const nl: Translations = {
       { tagline: 'Connect', desc: 'AI-native IoT PaaS — u bent hier' },
       { tagline: 'Learn', desc: 'Visueel programmeeronderwijsplatform' },
       { tagline: 'Earn', desc: 'AI-agent marketplace & workflowautomatisering' },
-      { tagline: 'Control', desc: 'Remote device management console' },
-      { tagline: 'Watch', desc: 'Live stream & media management platform' },
+      { tagline: 'Control', desc: 'VistaRemote — WebRTC remote desktop & audit' },
+      { tagline: 'Vision', desc: 'Live stream & media management platform' },
     ],
     footer: 'Ontdek het volledige LuminaryWorks-ecosysteem →',
   },

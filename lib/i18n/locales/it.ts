@@ -1,4 +1,4 @@
-import type { Translations } from '../types'
+﻿import type { Translations } from '../types'
 
 export const it: Translations = {
   common: {
@@ -143,7 +143,7 @@ export const it: Translations = {
       { tagline: 'Learn', desc: 'Piattaforma educativa di programmazione visuale' },
       { tagline: 'Earn', desc: 'Marketplace agenti AI e automazione workflow' },
       { tagline: 'Control', desc: 'Console gestione remota dispositivi' },
-      { tagline: 'Watch', desc: 'Piattaforma streaming e gestione media' },
+      { tagline: 'Vision', desc: 'Piattaforma streaming e gestione media' },
     ],
     footer: 'Esplora l\'ecosistema LuminaryWorks completo →',
   },
